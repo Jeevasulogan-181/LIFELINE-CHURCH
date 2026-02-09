@@ -8,7 +8,7 @@ const _inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const _playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export const metadata: Metadata = {
-  title: 'Grace Community Church | Welcome Home',
+  title: 'Lifeline Church | Welcome Home',
   description: 'A welcoming, faith-centered community where you belong. Join us for worship, prayer, and fellowship.',
 }
 

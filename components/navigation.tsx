@@ -53,7 +53,7 @@ export function Navigation() {
           <a href="#home" className="flex items-center gap-2 group">
             <Cross className="h-6 w-6 text-primary transition-transform duration-300 group-hover:rotate-12" />
             <span className="font-serif text-lg font-bold text-foreground lg:text-xl">
-              Grace Community
+              Lifeline Church
             </span>
           </a>
 
