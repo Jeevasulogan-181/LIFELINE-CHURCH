@@ -1,0 +1,220 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+/* ============================================
+   FONT VARIABLES (loaded via Google Fonts in index.html)
+   ============================================ */
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+/* ============================================
+   DEEP SPACE DARK THEME - ONLY DARK MODE
+   ============================================ */
+
+:root,
+.dark {
+  --background: 230 35% 4%;
+  --foreground: 220 20% 95%;
+  --card: 230 35% 7%;
+  --card-foreground: 220 20% 95%;
+  --popover: 230 35% 7%;
+  --popover-foreground: 220 20% 95%;
+  --primary: 260 80% 70%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 230 35% 12%;
+  --secondary-foreground: 220 20% 90%;
+  --muted: 230 30% 12%;
+  --muted-foreground: 220 15% 60%;
+  --accent: 190 80% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62% 40%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 230 30% 15%;
+  --input: 230 30% 12%;
+  --ring: 260 80% 65%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body {
+    background-color: #03050f;
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    font-family: var(--font-poppins);
+  }
+  body { @apply bg-background text-foreground; }
+}
+
+/* COSMIC TEXT */
+.cosmic-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 40%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.heaven-text {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #e879f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* GLASS MORPHISM */
+.glass {
+  background: rgba(10, 15, 40, 0.65);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.heaven-card,
+.cosmic-card {
+  background: linear-gradient(135deg, rgba(20,10,50,0.65) 0%, rgba(8,15,40,0.5) 100%);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.6);
+  transition: all 0.4s ease;
+}
+.heaven-card:hover,
+.cosmic-card:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 20px 70px rgba(0,0,0,0.7), 0 0 40px rgba(124,58,237,0.15);
+  transform: translateY(-4px);
+}
+
+/* PILLS */
+.cosmic-pill,
+.heaven-pill {
+  background: rgba(15,10,40,0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139,92,246,0.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+.cosmic-pill:hover,
+.heaven-pill:hover {
+  border-color: rgba(139,92,246,0.6);
+  box-shadow: 0 0 20px rgba(124,58,237,0.25);
+}
+
+/* BUTTONS */
+.cosmic-button,
+.heaven-button {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #0891b2 100%);
+  box-shadow: 0 4px 24px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+  border: none;
+}
+.cosmic-button:hover,
+.heaven-button:hover {
+  box-shadow: 0 8px 40px rgba(124,58,237,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* COSMIC GRADIENT BG */
+.cosmic-gradient {
+  background: linear-gradient(180deg, rgba(30,10,60,0.8) 0%, rgba(10,15,40,0.6) 100%);
+}
+
+/* SHADOW */
+.shadow-cosmic {
+  box-shadow: 0 10px 40px rgba(124,58,237,0.2);
+}
+
+/* ANIMATED UNDERLINE */
+.animated-underline { position: relative; }
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  width: 0; height: 2px;
+  bottom: -2px; left: 0;
+  background: linear-gradient(90deg, #7c3aed, #0891b2);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after { width: 100%; }
+
+/* NEBULA ORBS */
+.nebula-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: nebula-float var(--orb-dur, 20s) ease-in-out infinite var(--orb-delay, 0s);
+  pointer-events: none;
+}
+@keyframes nebula-float {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  25%  { transform: translate(30px,-25px) scale(1.08); }
+  50%  { transform: translate(-15px,20px) scale(0.94); }
+  75%  { transform: translate(20px,30px) scale(1.05); }
+}
+
+/* FLOATING ORB (alias) */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float 15s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(20px,-20px) scale(1.05); }
+  66%  { transform: translate(-15px,15px) scale(0.95); }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #03050f; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #0891b2);
+  border-radius: 3px;
+}
+
+/* INPUT OVERRIDES */
+input, textarea {
+  background: rgba(10,15,40,0.7) !important;
+  border-color: rgba(139,92,246,0.25) !important;
+  color: hsl(var(--foreground)) !important;
+}
+input:focus, textarea:focus {
+  border-color: rgba(139,92,246,0.6) !important;
+  box-shadow: 0 0 0 2px rgba(124,58,237,0.2) !important;
+}
+
+/* ============ DIALOG / MODAL OVERRIDES ============ */
+[role="dialog"],
+[data-radix-dialog-content] {
+  background: rgba(6, 8, 25, 0.97) !important;
+  border-color: rgba(139, 92, 246, 0.25) !important;
+}
+
+/* ============ CARD DEFAULT BG ============ */
+.bg-card {
+  background: rgba(10, 15, 40, 0.6) !important;
+}
+
+/* ============ LABEL COLOR ============ */
+label {
+  color: rgba(255,255,255,0.65);
+}
+
+/* ============ BUTTON OUTLINE VARIANT ============ */
+button[class*="border"] {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* ============ TOAST OVERRIDES ============ */
+[data-sonner-toast],
+.toast {
+  background: rgba(10, 15, 40, 0.95) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: white !important;
+  backdrop-filter: blur(20px);
+}
